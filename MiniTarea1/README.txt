@@ -31,9 +31,9 @@ Las siguientes instrucciones se darán considerando que se utiliza el IDLE de Pyt
 
 Es importante señalar que este paso se debe realizar para que el Shell de Python identifique la dirección donde se encuentra el archivo .py a ejecutar (Redes.py o Redes2.py). 
 
-IMPORTANTE: EL PASO 5 DEPENDE DEL ARCHIVO EJECUTADO EN EL PASO 4. SI SE EJECUTÓ Redes.py ENTONCES LEER LAS INSTRUCCIONES PARA DICHO ARCHIVO, EN CASO CONTRARIO LEER LAS INSTRUCCIONES PARA Redes2.py. 
+IMPORTANTE: EL PASO 5 DEPENDE DEL ARCHIVO EJECUTADO EN EL PASO 4. SI SE EJECUTÓ Redes.py ENTONCES LEER LAS INSTRUCCIONES PARA DICHO ARCHIVO (5.a), EN CASO CONTRARIO LEER LAS INSTRUCCIONES PARA Redes2.py (5.b). 
 
-TRAS HABER PROBADO UNO DE LOS ARCHIVOS Y, SI SE DESEA EJECUTAR EL OTRO, SE DEBEN REPETIR LOS PASOS DESDE EL 2 ABRIENDO EL ARCHIVO CONTRARIO.
+TRAS HABER PROBADO UNO DE LOS ARCHIVOS Y, SI SE DESEA EJECUTAR EL OTRO, SE DEBEN REPETIR LOS PASOS DESDE EL 2 ABRIENDO EL ARCHIVO CONTRARIO (esto se realiza en caso de que los archivos se hayan guardado en carpetas diferentes, si están en la misma carpeta no es necesario y se pueden realizar las instruccioness 5.a y 5.b de forma simultanea).
 
 5.- Luego ir al IDLE de Python. 
 

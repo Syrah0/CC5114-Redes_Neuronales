@@ -1,5 +1,6 @@
 import random
 import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve
 
 ### Alumna: Alexandra Ibarra
 
@@ -36,8 +37,8 @@ class Perceptron:
         good = 0
         bad = 0
         for j in range(iter):
-            x1 = random.randit(-30,30)
-            y1 = random.randit(-30,30)
+            x1 = random.randint(-30,30)
+            y1 = random.randint(-30,30)
             if(self.funAux(x1)>y1):
                 output = 0
             else:
@@ -58,17 +59,61 @@ class Perceptron:
         return [goodArray,badArray]
     ### RETORNAR ARRAYS Y CREAR FUNCION TEST QUE GRAFIQUE
 
+    def prediction(self,iter):
+        goodArray = []
+        badArray = []
+        good = 0
+        bad = 0
+        for j in range(iter):
+            x1 = random.randint(-30,30)
+            y1 = random.randint(-30,30)
+            if(self.funAux(x1)>y1):
+                output = 0
+            else:
+                output = 1
+            predict = self.perceptron(x1,y1)
+            if(predict == 0 and output == 1):
+                bad += 1
+            elif(predict == 1 and output == 0):
+                bad += 1
+            else:
+                good += 1
+            goodArray.append(good)
+            badArray.append(bad)
+            print bad,good
+        return [goodArray,badArray]
+
     def testTraining(self):
         ### Entrenamiento ###
-        iter = 80
+        iter = 2000
         [good,bad] = self.training(iter)
         x = []
         for j in range(iter):
-            good[j] = good[j]/j
+            good[j] = (good[j]*1.0) / (j + 1)
+            bad[j] = (bad[j]*1.0) / (j + 1)
             x.append(j)
         plt.figure()
         plt.plot(x,good)
+        #plt.figure()
+        #plt.plot(x,bad)
         plt.show()
 
-p = Perceptron(2,3,1.5)
+    def testPrediction(self):
+        ### Entrenamiento ###
+        iter = 2000/4
+        [good,bad] = self.prediction(iter)
+        x = []
+        for j in range(iter):
+            good[j] = (good[j]*1.0) / (j + 1)
+            bad[j] = (bad[j]*1.0) / (j + 1)
+            x.append(j)
+        plt.figure()
+        plt.plot(x,good)
+        #plt.figure()
+        #plt.plot(x,bad)
+        plt.show()
+
+p = Perceptron(1.5,0.2,-0.5)
 p.testTraining()
+p.testPrediction()
+

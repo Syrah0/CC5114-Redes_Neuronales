@@ -1,29 +1,18 @@
+from math import exp
 import random
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve
 
-### Alumna: Alexandra Ibarra
-
-# x1: valor entrada 1
-# w1: peso entrada 1
-# x2: valor entrada 2
-# w2: peso entrada 2
-# bias: bias del perceptron
-# Se encarga de representar un perceptron
-
-
-class Perceptron:
-
-    ## Se encarga de inicializar un perceptron
+class Sigmoid:
     def __init__(self,w1,w2,bias):
         self.w1 = w1
         self.w2 = w2
         self.bias = bias
 
-    ## Se encarga de realizar el calculo del perceptron
-    def perceptron(self, x1, x2):
-        v = x1 * self.w1 + x2 * self.w2
-        if (v + self.bias <= 0):
+    def sigmoid(self, x1, x2):
+        v = x1 * self.w1 + x2 * self.w2 + self.bias
+        output = (1.0/(1+exp(v)))
+        if (output > 0.4):
             return 0
         return 1
 
@@ -46,7 +35,7 @@ class Perceptron:
             else:
                 output = 1
             realValues.append(output)
-            predict = self.perceptron(x1, y1)
+            predict = self.sigmoid(x1, y1)
             predictValues.append(predict)
             if(predict == 0 and output == 1):
                 bad += 1
@@ -82,7 +71,7 @@ class Perceptron:
             else:
                 output = 1
             realValues.append(output)
-            predict = self.perceptron(x1,y1)
+            predict = self.sigmoid(x1,y1)
             predictValues.append(predict)
             if(predict == 0):
                 class0x.append(x1)
@@ -143,6 +132,6 @@ class Perceptron:
         plt.plot(fp,tp)
         plt.show()
 
-p = Perceptron(10,1,-2.5)
+p = Sigmoid(10,1,-2.5)
 p.testTraining()
 p.testPrediction()

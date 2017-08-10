@@ -1,6 +1,7 @@
 El link directo al repositorio que contiene la tarea es:
 
-https://github.com/Syrah0/CC5114-Redes_Neuronales/tree/master/MiniTarea1
+https://github.com/Syrah0/CC5114-Redes_Neuronales/tree/master/MiniTarea2
+
 
 IMPORTANTE!!!!
 

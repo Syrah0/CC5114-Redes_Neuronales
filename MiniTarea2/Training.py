@@ -61,6 +61,7 @@ class Perceptron:
             #print(self.w1, self.w2)
         return goodArray
 
+    ## Funcion encargada de predecir las clases de diferentes elementos usando un perceptron ya entrenado
     def prediction(self,iter):
         #realValues = []  # contiene los valores o clases reales de los puntos
         #predictValues = []  # contiene las clases predichas por el perceptron
@@ -138,5 +139,6 @@ class Perceptron:
 
 # crea perceptron para proceso de testeo
 p = Perceptron(-2.5,1.5,-0.5)
+#p = Perceptron(10,1,-2.5)
 p.testTraining()
 p.testPrediction()

@@ -137,6 +137,8 @@ class Perceptron:
         #plt.plot(fp,tp)
         plt.show()
 
+#### TESTING #####
+
 # crea perceptron para proceso de testeo
 p = Perceptron(-2.5,1.5,-0.5)
 #p = Perceptron(10,1,-2.5)

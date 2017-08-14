@@ -63,3 +63,6 @@ p2 = Sigmoid(w1,w2,bias,threshold)
 p2.sigmoid(x1,x2)
 
 por ejemplo.
+
+
+NOTA!!! ES POSIBLE CREAR LOS NAND, OR, AND CON SIGMOID NEURON -> LOS TEST SE ENCUENTRAN AL FINAL DEL ARCHIVO

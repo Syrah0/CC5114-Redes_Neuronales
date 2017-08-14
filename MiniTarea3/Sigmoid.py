@@ -30,6 +30,30 @@ class Sigmoid:
             return 0
         return 1
 
+    ## Se encarga de simular la compuerta logica NAND
+    def NAND(self, x1, x2):
+        self.w1 = -2
+        self.w2 = -2
+        self.bias = 3
+        self.thre = 0.5
+        return self.sigmoid(x1, x2)
+
+    ## Se encarga de simular la compuerta logica AND
+    def AND(self, x1, x2):
+        self.w1 = 1
+        self.w2 = 1
+        self.bias = -1.5
+        self.thre = 0.5
+        return self.sigmoid(x1, x2)
+
+    ## Se encarga de simular la compuerta logica OR
+    def OR(self, x1, x2):
+        self.w1 = 1
+        self.w2 = 1
+        self.bias = -0.5
+        self.thre = 0.5
+        return self.sigmoid(x1, x2)
+
     ## Funcion auxiliar encargada para calculo de la clase de los elementos
     def funAux(self,x):
         return 2*x + 5
@@ -128,8 +152,28 @@ class Sigmoid:
         plt.plot([-50,50], [self.funAux(-50),self.funAux(50)])
         plt.show()
 
+###### TESTING #######
+
 # crea sigmoid neuron para proceso de testeo
 p = Sigmoid(-2.5, 1.5, -0.5, 0.5)
 #p = Sigmoid(10,1,-2.5)
 p.testTraining()
 p.testPrediction()
+
+## TEST PARA NAND
+assert p.NAND(0, 0) == 1
+assert p.NAND(0, 1) == 1
+assert p.NAND(1, 0) == 1
+assert p.NAND(1, 1) == 0
+
+## TEST PARA AND
+assert p.AND(0, 0) == 0
+assert p.AND(0, 1) == 0
+assert p.AND(1, 0) == 0
+assert p.AND(1, 1) == 1
+
+## TEST PARA OR
+assert p.OR(0, 0) == 0
+assert p.OR(0, 1) == 1
+assert p.OR(1, 0) == 1
+assert p.OR(1, 1) == 1

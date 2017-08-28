@@ -31,13 +31,14 @@ class Network:
             else:
                 w = self.neuron[i-1]
 
-            weigth = []
             for j in range(self.neuron[i]):
+                weigth = []
                 for k in range(w):
                     weigth.append(1)
                 p = Sigmoid(weigth,2) # arreglar!!!!!!!!!!!!!!!!!!!
                 self.layers.append(p)
 
+        ## en este punto -> len(layers) = sum(self.neuron) => i_out = sum(self.neuron)
         ## creo capa output
         weigth = []
         for i in range(self.out):
@@ -66,5 +67,44 @@ class Network:
             if i != self.hidden:
                 pos += self.neuron[i]
 
-    #def backpropagation(self):
+    def backpropagation(self):
+        # error y delta output capa
+        pos_out = 0
+        for i in range(self.hidden):
+            pos_out += self.neuron[i]
+
+        for i in range(pos_out,self.out + pos_out):
+            self.layers[i].setError()
+            self.layers[i].setDelta()
+
+        # error y delta otras capas
+        for i in range(self.hidden):
+            numNeuron = self.neuron[self.hidden - i - 1]
+            nextLayer = []
+
+            pos = 0
+            for j in range(self.hidden - i - 1):
+                pos += self.neuron[j]
+
+            if i == 0:
+                endNextLayer = self.out
+            else:
+                endNextLayer = self.neuron[self.hidden - i]
+
+            for j in range(pos + numNeuron, pos + numNeuron + endNextLayer):
+                nextLayer.append(self.layers[j])
+
+            for j in range(pos, pos + numNeuron):
+                self.layers[j].setErrorHidden(nextLayer, j - pos)
+                self.layers[j].setDelta()
+
+    def updateWeightAndBias(self, rate):
+        for i in range(len(self.layers)):
+            self.layers[i].setWeight(rate)
+            self.layers[i].setBias(rate)
+
+    def neuralNetwoks(self,rate):
+        self.feeding()
+        self.backpropagation()
+        self.updateWeightAndBias(rate)
 
